@@ -2,14 +2,31 @@
 
 class Shoe:
     def __init__(self, brand, size):
-        self.brand = brand
-        self.size = size
-    def __init__(self, brand, size):
-        self.brand = brand
-        if not isinstance(size, int):
-            print("Error: size must be an integer.")
+        self._brand = brand
+        self._size = size
+        self._condition = "Used"
+
+    @property
+    def brand(self):
+        return self._brand
+
+    @property
+    def size(self):
+        return self._size
+
+    @size.setter
+    def size(self, value):
+        if not isinstance(value, int):
+            print("size must be an integer")
         else:
-            self.size = size
-            self.condition = 'New'    
-   
+            self._size = value
+
+    @property
+    def condition(self):
+        return self._condition
+
+    def cobble(self):
+        print("Your shoe is as good as new!")
+        self._condition = "New"
+
     pass
